@@ -1,0 +1,69 @@
+////react////
+
+sudo apt update
+sudo apt install nodejs npm
+npx create-react-app my-react-app
+cd my-react-app
+npm start (to start react application)
+npm run build (to build an project)
+to run the applicaton on port 80 create a .env file on project directory and specify PORT=80
+
+
+
+.......................................................................................................................................................
+
+////tomcat apache 10////
+https://www.fosstechnix.com/deploy-war-file-in-tomcat-2-steps/
+https://linux.how2shout.com/install-apache-tomcat-10-on-debian-11-linux/
+
+sudo apt update
+sudo apt install default-jdk
+cd /opt
+sudo mkdir tomcat
+sudo chmod 777 -R /opt/tomcat/
+sudo wget https://downloads.apache.org/tomcat/tomcat-10/v10.0.4/bin/apache-tomcat-10.0.4.tar.gz
+sudo tar xzvf apache-tomcat-10*tar.gz -C /opt/tomcat --strip-components=1
+
+
+bin directory
+mywebapp directory
+
+
+
+......................................................................................................................................................
+////database///
+
+sudo apt install mariadb-server
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+
+
+
+
+........................................................................................................................................................
+
+sudo nano /etc/nginx/sites-available/html
+
+server {
+    listen 80;
+    server_name http://13.201.74.72;
+
+    root /var/www/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /api {
+    proxy_pass http://localhost:8080;
+}
+
+}
+
+
+
+sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+sudo systemctl restart nginx
+
