@@ -67,3 +67,9 @@ sudo nginx -t
 sudo systemctl reload nginx
 sudo systemctl restart nginx
 
+////////////////////////////////////////////////////////////////////////////////////
+how to hide a tomcat apache page
+-->1)give access from localhost only-->in server.xml file
+-->2)in inbound rules give access to a particular ip on the port which is defined
+
+//////////////////////////////////////////////////////////////////////////////////
