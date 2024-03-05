@@ -73,3 +73,8 @@ how to hide a tomcat apache page
 -->2)in inbound rules give access to a particular ip on the port which is defined
 
 //////////////////////////////////////////////////////////////////////////////////
+how to secure a server
+1)security inbound rules
+2)
+
+
