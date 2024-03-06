@@ -1,1 +1,22 @@
 https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1
+
+
+
+
+for ssl 
+1)need .jks file
+2)put following data in server.xml file
+
+<Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+               maxThreads="150" SSLEnabled="true"
+               maxParameterCount="1000"
+               >
+        <UpgradeProtocol className="org.apache.coyote.http2.Http2Protocol" />
+        <SSLHostConfig>
+            <Certificate certificateKeystoreFile="/opt/tomcat/ssl/rapportsoftin.jks" certificateKeystorePassword="password"
+                         type="RSA" />
+        </SSLHostConfig>
+    </Connector>
+
+3)
+build file with https://domain:8443/site file(.war file)
