@@ -4,8 +4,15 @@ https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl
 
 
 for ssl 
-1)need .jks file
-2)put following data in server.xml file
+
+1)
+-->Convert the .pem and .key files to a PKCS12 format (.p12)
+openssl pkcs12 -export -out certificate.p12 -inkey private.key -in certificate.pem -name "alias"
+-->Import the PKCS12 file into a Java KeyStore (.jks)
+keytool -importkeystore -destkeystore keystore.jks -srckeystore certificate.p12 -srcstoretype PKCS12 -alias "alias"
+
+2)need .jks file
+3)put following data in server.xml file
 
 <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"
                maxThreads="150" SSLEnabled="true"
@@ -18,5 +25,5 @@ for ssl
         </SSLHostConfig>
     </Connector>
 
-3)
+4)
 build file with https://domain:8443/site file(.war file)
